@@ -8,6 +8,11 @@ const nextConfig: NextConfig = {
         hostname: 'ashyo.store',
         pathname: '/files/**',
       },
+      {
+        protocol: 'https',
+        hostname: 'api.ashyo.fullstackdev.uz',
+        pathname: '/uploads/**',
+      },
     ],
   },
 };

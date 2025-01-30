@@ -24,5 +24,25 @@ export interface ProductItemType {
     image:string,
     price:number,
     productId:number,
-    quantity:number
+    quantity:number,
+}
+
+export interface ProductTypeV2 {
+    brand_id:string,
+    category:{},
+    category_id:string,
+    comments:any[],
+    createdAt:string,
+    description:string,
+    id:number,
+    image:string,
+    is_aksiya:boolean,
+    like:any[],
+    name:string,
+    nasiya:string,
+    price:number,
+    product_item:any,
+    rating:number,
+    summary:string,
+    updatedAt:string
 }

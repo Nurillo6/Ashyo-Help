@@ -1,13 +1,23 @@
 "use client"
-import { instance } from "@/hooks/instance"
+import { instance, instanceV2 } from "@/hooks/instance"
 import { useQuery } from "@tanstack/react-query"
 
-export const getProducts = (API:string, id?:string) => {
+export const getProducts = (API:string, id?:string | null, V2?:boolean) => {
     const params = { page: 1, limit: 1000 , categoryId:id ? id : null}
 
     const { data:products = [], isLoading } = useQuery({
         queryKey: ['product_item'],
-        queryFn: () => instance().get(API, { params }).then(res => res.data?.productItems)
+        queryFn: () => (V2 ? instanceV2() : instance()).get(API, { params }).then(res => res.data?.productItems)
+    })
+    return {products, isLoading}
+}
+
+export const getProductsV2 = (minPrice?:number, maxPrice?:number, brandId?:number | null) => {
+    const params = { page: 1, limit: 1000, min_price:minPrice ? minPrice : null, max_price:maxPrice ? maxPrice : null, brand_id:brandId ? brandId: null}
+
+    const { data:products = [], isLoading } = useQuery({
+        queryKey: ['product_v2', minPrice, maxPrice,brandId],
+        queryFn: () => instanceV2().get("/products", { params }).then(res => res.data.items)
     })
     return {products, isLoading}
 }

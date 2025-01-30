@@ -19,7 +19,7 @@ const CategoryNestedList = () => {
         setNestedChild(data);
     }
     function handleCategoryClick(value:number){
-        router.push(`/${value}`)
+        router.push(`/category/${value}`)
         setShowCategory(false)
     }
   return (

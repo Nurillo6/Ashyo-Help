@@ -1,10 +1,10 @@
 import { Skeleton } from '@heroui/skeleton'
-import React from 'react'
+import React, { FC } from 'react'
 
-const ProductItemSkeleton = () => {
-    const data = [1,2,3,4,5]
+const ProductItemSkeleton:FC<{extraClass?:string}> = ({extraClass}) => {
+    const data = [1,2,3,4,5,6]
   return (
-    <div className='space-x-5 flex '>
+    <div className={`${extraClass} space-x-5 flex `}>
         {data.map(item => (
             <div key={item} className='min-w-[273px] product-item duration-300'>
                 <Skeleton className="h-[200px] w-full mb-[5px] rounded-lg" />
