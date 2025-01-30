@@ -15,6 +15,8 @@ const Brend = () => {
         image: null,
         Product: []
     }
+    console.log(brands);
+    
     return (
         <div className='containers brend-wrapper !mb-[110px]'>
             {isLoading ? <BrandLoading/> :  [...brands, lastObj].map((item: BrandType) => item.id != null ? (

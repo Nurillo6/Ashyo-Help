@@ -3,10 +3,14 @@ import { ProductItemType } from '@/types/ProductsType'
 import Image from 'next/image'
 import React, { FC } from 'react'
 import Button from './Button'
-import { BasketCartIcon, CompareIcon } from '@/icons'
+import { BasketCartIcon, CompareIcon, LikeIcon } from '@/icons'
 
 const ProductItem:FC<{item:ProductItemType, V2?:boolean}> = ({item, V2}) => {
-    
+    function handleLikeClick(id:string | number) {
+        
+    }
+
+
   return (
     V2 ?   <div className='w-full sm:w-[273px] product-item duration-300'>
     <div className='bg-[#EBEFF3] relative rounded-[8px] mb-[16px] flex items-center justify-center h-[280px]'>
@@ -22,7 +26,7 @@ const ProductItem:FC<{item:ProductItemType, V2?:boolean}> = ({item, V2}) => {
         </div>
     </div>
 </div> :
-   <div className='w-full sm:w-[273px] product-item duration-300'>
+   <div className='w-full sm:w-[273px] relative product-item duration-300'>
         <div className='bg-[#EBEFF3] relative rounded-[8px] mb-[16px] flex items-center justify-center h-[280px]'>
             <Image className='product-img duration-300' style={{width:"202px" , height:"202px"}} src={`${IMAGE_API}/${item.image}`} width={202} height={202} alt='Product img' priority/>
              {/* <span className='bg-white px-[10px] py-[7px] rounded-[5px] font-semibold text-[14px] text-[#E81504] absolute top-[15px] left-[15px]'>Aksiyada</span> */}
@@ -35,6 +39,7 @@ const ProductItem:FC<{item:ProductItemType, V2?:boolean}> = ({item, V2}) => {
                 <Button extrClass='!w-[52px] !h-[44px] !p-0 text-white' type='button' icon={<BasketCartIcon/>} iconPostion='left'/>
             </div>
         </div>
+        <button onClick={() => handleLikeClick(item.id)} className='absolute top-[20px] right-[20px]'> <LikeIcon/> </button>
    </div>
   )
 }
