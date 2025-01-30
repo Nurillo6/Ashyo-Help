@@ -9,9 +9,10 @@ import 'swiper/css';
 import 'swiper/css/navigation';
 import { Navigation } from 'swiper/modules'
 import Button from './Button'
+import ProductItemSkeleton from './ProductItemSkeleton'
 
 const Products:FC<ProductPageType> = ({title, API, extraClass}) => {
-    const {products} = getProducts(API)
+    const {products, isLoading} = getProducts(API)
   return (
     <div className={`mb-[48px] sm:mb-0 mt-[79px] ${extraClass}`}>
       <div className='containers'>
@@ -24,12 +25,13 @@ const Products:FC<ProductPageType> = ({title, API, extraClass}) => {
           modules={[Navigation]}
           className="product-carucel !px-5 !hidden sm:!block"
         >
-          {products.map((item:ProductItemType) => (
+          {isLoading ? <ProductItemSkeleton/> :
+           products.map((item:ProductItemType) => (
             <SwiperSlide key={item.id}> <ProductItem item={item}/> </SwiperSlide>
           ))}
       </Swiper>
       <div className='px-5 sm:hidden grid grid-cols-2 gap-[15px] flex-wrap'>
-        {products.map((item:ProductItemType) => <ProductItem key={item.id} item={item}/>)}
+        {isLoading ? <ProductItemSkeleton/> : products.map((item:ProductItemType) => <ProductItem key={item.id} item={item}/>)}
       </div>
       <Button extrClass='sm:hidden !bg-[#EBEFF3] !text-[#134E9B] !w-[198px] !py-[12px] mx-auto mt-[30px]' type='button' title='Ko’proq'/>
     </div>

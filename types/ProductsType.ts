@@ -13,7 +13,7 @@ export interface ProductType {
 export interface ProductPageType {
     title:string,
     API:string,
-    extraClass?:string,
+    extraClass?:string
 }
 
 export interface ProductItemType {

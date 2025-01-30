@@ -4,6 +4,7 @@ import Image from 'next/image'
 import React, { FC } from 'react'
 import Button from './Button'
 import { BasketCartIcon, CompareIcon } from '@/icons'
+import { Skeleton } from '@heroui/skeleton'
 
 const ProductItem:FC<{item:ProductItemType}> = ({item}) => {
     
@@ -13,7 +14,7 @@ const ProductItem:FC<{item:ProductItemType}> = ({item}) => {
             <Image className='product-img duration-300' style={{width:"202px" , height:"202px"}} src={`${IMAGE_API}/${item.image}`} width={202} height={202} alt='Product img' priority/>
              {/* <span className='bg-white px-[10px] py-[7px] rounded-[5px] font-semibold text-[14px] text-[#E81504] absolute top-[15px] left-[15px]'>Aksiyada</span> */}
         </div>
-        <p className='text-[18px] font-normal leading-[19px] text-[#545D6A] mb-[28px]'>{item.name}</p>
+        <p className='text-[18px] font-normal leading-[19px] text-[#545D6A] line-clamp-1 mb-[28px]'>{item.name}</p>
         <div className='flex justify-between'>
             <strong className='text-[20px] leading-[26px] font-bold'>{item.price} usz</strong>
             <div className='flex gap-[10px]'>
